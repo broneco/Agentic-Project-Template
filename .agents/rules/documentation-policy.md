@@ -33,11 +33,10 @@ Create or update an ADR for durable decisions.
 
 Examples requiring ADR:
 
-- choosing PostgreSQL + pgvector as MVP vector store
-- introducing Azure AI Search later
-- selecting LangGraph for stateful workflows
-- deciding how ACL filtering is enforced
-- changing model profile strategy
+- choosing primary database or storage engines
+- introducing new external integrations or search backends
+- selecting core frameworks or orchestration libraries
+- deciding how security/ACL filtering is enforced
 - changing deployment architecture
 
 Examples not requiring ADR:
@@ -46,6 +45,18 @@ Examples not requiring ADR:
 - adding a small unit test
 - fixing a typo
 - updating documentation wording
+
+## Design Guides (Mandatory for Complex Features)
+
+For any complex feature, algorithm, workflow, or architectural concept introduced or significantly modified, you MUST create or update a conceptual design guide in `docs/design/` to explain the concept in plain human language.
+
+Purpose:
+- Explain conceptually how the feature or system works.
+- Focus on business logic, conceptual architecture, and user flows without detailing technical database or code implementations.
+- Use clear headings, bullet points, formulas, examples, or ASCII/Mermaid diagrams to illustrate concepts.
+
+Naming convention:
+`docs/design/<feature-name>-guide.md` (e.g., `docs/design/hybrid-search-rrf-guide.md`).
 
 ## Memory updates
 

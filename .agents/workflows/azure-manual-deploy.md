@@ -4,18 +4,16 @@ Use this workflow whenever a task needs Azure resources or cloud configuration t
 
 ## 1. Identify deployment need
 
-Examples:
+[AGENT PROMPT: Identify the infrastructure components needed for the current slice/application and ask the user to provision them. Below are examples of resources that might be needed.]
 
-- PostgreSQL Flexible Server
-- pgvector extension
-- Blob Storage container
-- Azure AI Foundry model deployments
-- Azure Key Vault secrets
-- Container Apps environment
-- Container Registry
-- Managed identity assignment
-- Entra ID app registration
-- Application Insights
+Examples:
+- Databases (SQL, NoSQL, Vector DB)
+- Storage accounts or buckets
+- AI model endpoints or deployments
+- Key Vaults or secret managers
+- Container environments and registries
+- Telemetry & monitoring tools
+- Managed identities and identity provider registrations
 
 ## 2. Create handoff file
 

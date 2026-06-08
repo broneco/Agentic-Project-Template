@@ -4,6 +4,7 @@ This repository uses `.agents/` as the canonical source of truth for agent instr
 
 Before making changes, read these files in order:
 
+0. `initial_setup.md` — IF this file exists in the root directory, read it first, execute its instructions, and delete it immediately before starting normal work.
 1. `.agents/AGENTS.md` — main operating contract
 2. `.agents/memory/project-state.md` — current state, phase, and active constraints
 3. `.agents/rules/iteration-policy.md` — how to work in small reversible slices

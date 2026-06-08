@@ -2,9 +2,9 @@
 
 ## Role
 
-You are an implementation agent for a full-stack AI Search Application.
+You are an implementation agent for a full-stack application.
 
-The application is an Azure-first, Python/FastAPI, PostgreSQL/pgvector, hybrid retrieval, LangChain/LangGraph-based product for searching company knowledge and documents with citations, freshness validation, ACL-aware retrieval, auditability, and future Microsoft 365 integration.
+[AGENT PROMPT: If the specific application type, tech stack, and goals are not yet defined, you must proactively ask the user to define them, or suggest a suitable stack based on the project's requirements. Once defined, update this operating contract, the memory files, and the rules to match the agreed architecture.]
 
 Your job is to build the project iteratively in small, reversible, tested slices. Do not attempt to implement the entire design in one large pass.
 
@@ -25,21 +25,20 @@ If a design note conflicts with implemented reality, do not silently choose one.
 
 ## Product boundaries
 
+[AGENT PROMPT: Ask the user to define the target architecture or fill in the product boundaries. Below is a generic template structure to populate once the architecture is agreed upon.]
+
 Build toward the following target architecture:
 
-- Frontend: Next.js / React / TypeScript
-- Backend: Python 3.11+, FastAPI, Pydantic
-- Data: Azure Database for PostgreSQL Flexible Server with pgvector
-- Search: hybrid retrieval using pgvector + PostgreSQL full-text search in MVP
-- Storage: Azure Blob Storage
-- Runtime: Azure Container Apps and Container Apps Jobs
-- Models: Azure AI Foundry / Azure OpenAI-compatible deployments
-- Auth: Microsoft Entra ID
-- Secrets: Azure Key Vault and managed identity where possible
-- Observability: Azure Monitor, Application Insights, structured logs
-- AI orchestration: LangChain for integrations, LangGraph for stateful workflows
+- Frontend: [e.g., Next.js / React / TypeScript]
+- Backend: [e.g., Python / FastAPI, Node.js, etc.]
+- Data/Database: [e.g., PostgreSQL, CosmosDB, SQL Server]
+- Storage: [e.g., Azure Blob Storage, AWS S3]
+- Runtime/Hosting: [e.g., Azure Container Apps, AWS ECS, etc.]
+- Auth/Secrets: [e.g., Entra ID, Auth0, Key Vault]
+- Observability: [e.g., Application Insights, Prometheus]
+- Core APIs/Orchestration: [e.g., Custom Services, LangChain/LangGraph if applicable]
 
-MVP must not depend on Azure AI Search, Qdrant, Databricks, Teams, or Outlook, although architecture must leave room for them later.
+[List any out-of-scope dependencies or future integrations here]
 
 ## Delivery philosophy
 
@@ -47,6 +46,7 @@ Always prefer:
 
 - small slices over one-shot implementation
 - working vertical increments over many unfinished layers
+- local/contained solutions by default (requesting cloud/Azure resources only when necessary or when they significantly simplify the architecture)
 - explicit interfaces over provider lock-in
 - tests and eval hooks over undocumented behavior
 - ADRs for architectural decisions
@@ -59,6 +59,8 @@ A task is not done until:
 
 - the implemented scope is clearly described
 - relevant tests are added or updated
+- a matching test explanation markdown file is created or updated in `docs/test_explained/` for each new/modified test file
+- conceptual design guides are created or updated in `docs/design/` for any complex feature or conceptual change
 - relevant tests are run, or the reason they could not run is stated
 - configuration changes are documented
 - any required Azure manual action is captured in `.agents/inbox/`
@@ -113,11 +115,10 @@ Create or update an ADR when changing or deciding:
 
 - cloud resource architecture
 - database or schema strategy
-- retrieval strategy
+- core integration strategy
 - provider abstraction boundaries
-- model routing strategy
-- auth or ACL strategy
-- ingestion architecture
+- authentication or access control strategy
+- core application architecture
 - observability strategy
 - deployment model
 - anything that would be expensive to reverse later
@@ -141,7 +142,7 @@ Do not store secrets, access tokens, passwords, API keys, private user data, or 
 
 The agent does not have direct Azure access.
 
-When Azure resources, model deployments, Key Vault values, managed identity, Entra ID configuration, Container Apps, PostgreSQL, Blob Storage, or Application Insights setup are required:
+When Azure resources, database setup, Key Vault values, managed identity, App Registrations, hosting resources, or telemetry setup are required:
 
 1. Stop before assuming the resource exists.
 2. Create a handoff file in `.agents/inbox/` using `.agents/templates/azure-deployment-handoff-template.md`.
@@ -153,17 +154,14 @@ When Azure resources, model deployments, Key Vault values, managed identity, Ent
 
 ## Non-goals for early slices
 
+[AGENT PROMPT: Ask the user to define non-goals for early slices, or propose them based on the application type.]
+
 Do not implement all of these in early slices unless explicitly requested:
 
-- Teams client
-- Outlook add-in
-- Azure AI Search backend
-- Qdrant backend
-- Databricks integration
+- complex enterprise integrations
 - advanced admin portal
 - multi-tenant production governance
-- fine-tuning
-- autonomous email or ticket creation
+- complex automation workflows
 
 ## Required working style
 

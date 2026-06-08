@@ -1,6 +1,6 @@
 ---
 name: architecture-boundaries
-description: Enforces architectural boundaries between API, schemas, retrieval, agents, providers, and storage layers, and specifies the dependency direction.
+description: Enforces architectural boundaries between API, schemas, services, providers, and storage layers, and specifies the dependency direction.
 activation: Always On
 ---
 
@@ -12,11 +12,9 @@ The backend must keep these layers separate:
 
 - API routes: HTTP concerns only
 - schemas: request and response contracts
-- retrieval: search, ranking, freshness, context packing
-- agents: LangGraph/LangChain orchestration and prompts
-- providers: LLM, embeddings, search, storage provider integrations
+- services: core business logic and workflows
+- providers: external service clients, cloud storage integrations, database adapters
 - storage: database connections and repositories
-- ingestion: loading, extraction, chunking, embedding, indexing
 - observability: logging, tracing, metrics
 
 ## Dependency direction
@@ -24,27 +22,25 @@ The backend must keep these layers separate:
 Allowed:
 
 - API calls services/use cases
-- services call retrieval, agents, storage, providers
-- retrieval uses provider interfaces and repositories
+- services call storage, providers, other services
 - providers wrap external services
 
 Avoid:
 
-- API routes directly querying PostgreSQL
-- LangChain objects leaking into API schemas
-- agents directly bypassing retrieval ACL filters
-- hardcoding Azure deployment names in business logic
+- API routes directly querying the database without service abstraction
+- external client objects leaking into API schemas
+- bypassing core business logic/validation filters
+- hardcoding environment-specific settings in business logic
 - frontend depending on internal backend database shapes
 
 ## Provider abstraction rule
 
 Any replaceable external dependency must sit behind a project interface:
 
-- LLM provider
-- embedding provider
-- search backend
-- blob storage
+- primary database
+- cloud storage
 - auth identity adapter
+- external APIs / third-party services
 - telemetry exporter
 
-MVP can implement only Azure/PostgreSQL providers, but interfaces must not make future replacement impossible.
+Interface definitions must not make future replacement impossible.

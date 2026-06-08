@@ -32,6 +32,7 @@ If the request is too large, implement the first useful slice only.
 
 - Run targeted tests.
 - Add tests if behavior changed.
+- Create or update corresponding test explanation markdown files under `docs/test_explained/` using the template.
 - If tests cannot run, document exact command and risk.
 
 ## 5. Record
@@ -40,6 +41,7 @@ Update as relevant:
 
 - `CHANGELOG.md`
 - `docs/adr/*.md`
+- `docs/design/*.md`
 - `.agents/memory/project-state.md`
 - `.agents/memory/implementation-notes.md`
 - `.agents/memory/open-questions.md`

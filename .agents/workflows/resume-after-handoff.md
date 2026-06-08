@@ -31,12 +31,11 @@ Never write secret values.
 
 Run or prepare checks for:
 
-- database connection
-- pgvector availability
-- blob storage access
-- model deployment availability
-- Key Vault reference resolution
-- Application Insights telemetry
+- database connectivity
+- storage access
+- external API / model deployment availability (if applicable)
+- secret reference resolution
+- telemetry & monitoring connectivity
 
 ## 5. Record outcome
 

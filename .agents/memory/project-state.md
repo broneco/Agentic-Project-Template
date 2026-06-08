@@ -4,94 +4,75 @@ Last updated: 2026-05-26
 
 ## Product summary
 
-Full-stack AI Search Application for company knowledge and documents.
+[AGENT PROMPT: Proactively ask the user for a summary of the application to be built. Once provided, update this file.]
 
-The system should provide a web UI and backend API for hybrid search over documents, combining vector similarity, full-text search, metadata filters, freshness validation, ACL filtering, and LLM-generated answers with citations.
+Generic application summary placeholder. Describe the application purpose, target users, and core value proposition here.
 
 ## Current phase
 
-Phase 0: Technical spike.
+Phase 0: Technical spike / Initialization.
 
-Primary goal: prove the minimal RAG flow without overbuilding the whole target architecture.
+Primary goal: [Define the primary goal of Phase 0, e.g., prove the minimal core flow or skeleton setup].
 
 ## Current recommended slice
+
+[AGENT PROMPT: Proactively ask the user what the first slice should focus on, or suggest one based on the application summary.]
 
 Build the smallest backend skeleton that can later support:
 
 1. health endpoint
 2. typed configuration
-3. provider interfaces for LLM, embeddings, and retrieval
+3. core service interfaces
 4. local test harness
 
-Do not deploy Azure resources until the first local skeleton and configuration contracts exist.
+Do not deploy cloud resources until the first local skeleton and configuration contracts exist.
 
 ## Target roadmap
 
-1. Phase 0: Technical spike
-   - FastAPI skeleton
-   - PostgreSQL/pgvector proof
-   - one document embedded
-   - vector query
-   - simple model answer
-   - minimal web UI or API-only demo
+[AGENT PROMPT: Help the user design a multi-phase roadmap for their specific application. Use the template below as a starting point.]
 
-2. Phase 1: Ingestion and retrieval
-   - Blob Storage integration
-   - document extraction
-   - chunking
-   - embeddings
-   - PostgreSQL full-text search
-   - hybrid ranking
-   - metadata filtering
-   - eval dataset
+1. Phase 0: Technical spike / Initialization
+   - Core skeleton / framework setup
+   - Minimal database connectivity proof
+   - Simple end-to-end flow validation (e.g., API-only demo)
+   - Typed configuration contract
 
-3. Phase 2: Agent and productization
-   - flash agent
-   - thinking agent
-   - source citations
-   - freshness validation
-   - feedback
-   - audit
-   - frontend
-   - Entra ID auth
+2. Phase 1: Core functionality
+   - Integration of primary data store / storage
+   - Implementation of core services and logic
+   - Standard API endpoints
+   - Basic automated tests / verification suite
 
-4. Phase 3: Enterprise hardening
-   - ACL filtering
-   - production monitoring
-   - rate limiting
-   - cost tracking
-   - ingestion worker scaling
-   - reindexing
-   - admin endpoints
-   - security review
+3. Phase 2: Integration and productization
+   - Identity, Authentication & Authorization setup
+   - Front-end integration
+   - Core workflow implementation
+   - Initial telemetry and monitoring
 
-5. Phase 4: Channel expansion
-   - Teams interface
-   - Outlook interface
-   - API for internal systems
-   - optional specialized search backend
+4. Phase 3: Enterprise hardening & scaling
+   - Fine-grained access control
+   - Robust observability and alerting
+   - Performance optimization & caching
+   - Administrative portals / dashboards
 
 ## Active architectural constraints
 
-- Azure-first.
-- Microsoft Azure is the only accepted strategic vendor lock-in.
-- Backend primary language: Python 3.11+.
-- Backend framework: FastAPI.
-- MVP data/search layer: Azure Database for PostgreSQL Flexible Server + pgvector + PostgreSQL full-text search.
-- Azure AI Search is not part of MVP.
-- Chroma may be used only for local experiments, not production.
-- LangChain/LangGraph may be used inside orchestration/providers but must not leak through the whole domain model.
-- LLM provider, embedding provider, and search backend must be replaceable through project interfaces.
-- Model deployment names must be configuration, not code.
+[AGENT PROMPT: Ask the user to define their strategic platform, programming language, database, and library constraints. Update this section accordingly.]
+
+- Cloud provider strategy (e.g., Azure-first, multi-cloud, etc.)
+- Primary programming language and framework
+- Database strategy (SQL, NoSQL, Vector DB)
+- External provider abstractions (interfaces for all key external dependencies)
+- Code separation (ensure core business logic does not leak vendor-specific details)
 
 ## Current known blockers
 
-- First document sources are not yet chosen.
-- Expected document/chunk volume is unknown.
-- ACL mapping from source systems is not yet designed.
-- Exact Azure model deployments are not known.
-- Pilot environment is not chosen.
+[AGENT PROMPT: Proactively ask the user if there are any immediate blockers or unknown requirements before starting the first phase.]
+
+- Application specifications and requirements are yet to be defined by the user.
+- Target cloud environment details are not finalized.
+- Tech stack choices need verification.
 
 ## Next slice recommendation
 
-Create repository skeleton and backend configuration contract before creating Azure resources.
+Define application scope, technical constraints, and create the initial repository skeleton.

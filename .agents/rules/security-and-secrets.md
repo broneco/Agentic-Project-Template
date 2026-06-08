@@ -68,13 +68,13 @@ Deny list:
 - command(Remove-Item)
 - command(del)
 - command(rd)
-- write_file(c:/Users/jan.petr/OneDrive - dolphinconsulting.cz/Projects/Agentic-Project-Template/Agentic-Project-Template/.env)
+- write_file(<ABSOLUTE_PATH_TO_PROJECT_ROOT>/.env)
 
 Allow list:
 - command(pytest)
 - command(python)
-- read_file(c:/Users/jan.petr/OneDrive - dolphinconsulting.cz/Projects/Agentic-Project-Template/Agentic-Project-Template)
-- write_file(c:/Users/jan.petr/OneDrive - dolphinconsulting.cz/Projects/Agentic-Project-Template/Agentic-Project-Template)
+- read_file(<ABSOLUTE_PATH_TO_PROJECT_ROOT>)
+- write_file(<ABSOLUTE_PATH_TO_PROJECT_ROOT>)
 
 Ask list:
 - mcp(*)
