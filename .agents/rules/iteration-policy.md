@@ -1,3 +1,9 @@
+---
+name: iteration-policy
+description: Enforces the iterative slice policy (spike, vertical-slice, hardening, refactor, docs) and defines scope limits for backend/frontend tasks.
+activation: Always On
+---
+
 # Rule: Iterative Slice Policy
 
 ## Purpose

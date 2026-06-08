@@ -1,3 +1,9 @@
+---
+name: documentation-policy
+description: Rules for updating CHANGELOG.md, creating/updating ADRs, and maintaining project-state or other memory files under .agents/memory/.
+activation: Always On
+---
+
 # Rule: Documentation, Changelog, and ADR Policy
 
 ## Changelog

@@ -10,7 +10,8 @@ The goal is not to make the agent implement the whole product in one shot. The g
 .agents/
   AGENTS.md                         # Main agent contract and source of truth
   README.md                         # This file
-  rules/                            # Always-on project rules
+  rules/                            # Project rules (Always On, Glob, etc.)
+  skills/                           # Task-specific capability packages (e.g. db-migration)
   workflows/                        # Repeatable task procedures
   templates/                        # Templates for ADRs, deployment handoffs, task slices
   memory/                           # Agent-maintained project memory
@@ -78,3 +79,16 @@ When the handoff is complete, move the final version to:
 ```text
 docs/deployments/YYYY-MM-DD-<short-task>.md
 ```
+
+## Security Guardrails and Skills
+
+### Security Guardrails in Rules
+Inside rule files under `.agents/rules/`, you can configure IDE-level safety guardrails to automatically allow, block, or ask for confirmation on commands and file operations using the `action(target)` format:
+* **`Deny list:`** Permanently blocked actions (e.g., `command(rm)`).
+* **`Allow list:`** Auto-approved routine actions (e.g., `command(pytest)`).
+* **`Ask list:`** Actions requiring manual user approval (e.g., `command(pip install)`).
+
+An example configuration can be found in the template `.agents/templates/security-guardrails-template.md`.
+
+### Skills
+The `.agents/skills/` directory is used to store modularized procedures and tools. Each skill must contain a `SKILL.md` file with a YAML frontmatter header (specifying name and description). The assistant dynamically loads skills based on the conversation context (progressive disclosure).

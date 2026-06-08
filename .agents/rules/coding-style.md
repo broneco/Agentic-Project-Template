@@ -1,11 +1,19 @@
+---
+name: coding-style
+description: General coding style, Python backend conventions (FastAPI, Pydantic), error handling, configuration rules, and frontend TypeScript standards.
+activation: Always On
+---
+
 # Rule: Coding Style
 
-## General
+## General Principles & Standards
 
-- Prefer clear, boring code over clever code.
-- Keep modules small and cohesive.
-- Use explicit names for domain concepts: `Document`, `Chunk`, `QueryAuditLog`, `ModelProfile`, `RetrievalResult`.
-- Avoid premature abstractions, but preserve provider boundaries from the design.
+- **DRY (Do Not Repeat Yourself)**: Strictly eliminate code redundancy. Code must be modular and easy to maintain. Repetitive logic belongs in shared utilities or components.
+- **Best Practices**: Adhere to modern standards of the language and ecosystem (e.g., Python 3.11+, TypeScript, ES6+, FastAPI). Write clean, secure, and performant code that is readable by both humans and machines.
+- **Modularity & Cohesion**: Keep modules small and cohesive (small, single-purpose, and cohesive modules). Prefer clear, straightforward (even boring) code over complex and "clever" constructs (`Prefer clear, boring code over clever code`).
+- **Domain Explicit naming**: Use explicit names for domain concepts, e.g., `Document`, `Chunk`, `QueryAuditLog`, `ModelProfile`, `RetrievalResult`.
+- **Abstraction**: Avoid premature abstractions (`Avoid premature abstractions`), but always preserve clearly defined provider and integration boundaries (`provider boundaries`) based on design.
+- **Unit Testing First**: Designing unit tests is an integral part of the planning phase. Tests must verify the application's functionality (resulting effect), not the specific technological approach or implementation details.
 
 ## Python backend
 

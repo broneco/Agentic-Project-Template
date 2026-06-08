@@ -1,3 +1,9 @@
+---
+name: azure-deployment-handshake
+description: Rules and workflow for requesting manual Azure resource deployment or configuration changes from a human operator.
+activation: Always On
+---
+
 # Rule: Azure Deployment Handshake
 
 ## Context

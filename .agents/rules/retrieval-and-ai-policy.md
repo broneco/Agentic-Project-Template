@@ -1,3 +1,9 @@
+---
+name: retrieval-and-ai-policy
+description: Design rules for the retrieval pipeline, model profiles (flash, thinking, embedding), LLM evidence-grounding, and citation requirements.
+activation: Always On
+---
+
 # Rule: Retrieval and AI Policy
 
 ## Retrieval pipeline target

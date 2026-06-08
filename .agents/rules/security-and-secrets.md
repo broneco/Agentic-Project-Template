@@ -1,3 +1,9 @@
+---
+name: security-and-secrets
+description: Security principles prohibiting committing secrets/credentials, enforcing pre-LLM ACL filtering, auditing log constraints, and defining hard command execution and file write guardrails.
+activation: Always On
+---
+
 # Rule: Security and Secrets
 
 ## Core rule
@@ -49,3 +55,27 @@ This applies to:
 Audit logs must be useful but minimized.
 
 Avoid storing full sensitive prompts or private document content unless explicitly required and approved. Prefer IDs, hashes, metadata, and redacted snippets.
+
+## Security Guardrails
+
+These lists define the security guardrails that the Antigravity IDE automatically enforces when executing actions in this repository.
+
+### Formatting rule (MANDATORY FOR THE AGENT):
+Whenever the assistant (AI) proposes, modifies, or writes new security rules for commands, folders, or files, it **must** write them into the lists below (Deny list, Allow list, Ask list) exclusively in the `action(target)` format (e.g., `command(prefix)`, `write_file(absolute_path)`, `read_file(absolute_path)`), so that the Antigravity IDE can correctly parse and enforce them at the security core level.
+
+Deny list:
+- command(rm)
+- command(Remove-Item)
+- command(del)
+- command(rd)
+- write_file(c:/Users/jan.petr/OneDrive - dolphinconsulting.cz/Projects/Agentic-Project-Template/Agentic-Project-Template/.env)
+
+Allow list:
+- command(pytest)
+- command(python)
+- read_file(c:/Users/jan.petr/OneDrive - dolphinconsulting.cz/Projects/Agentic-Project-Template/Agentic-Project-Template)
+- write_file(c:/Users/jan.petr/OneDrive - dolphinconsulting.cz/Projects/Agentic-Project-Template/Agentic-Project-Template)
+
+Ask list:
+- mcp(*)
+- command(pip install)

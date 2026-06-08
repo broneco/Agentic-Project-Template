@@ -1,3 +1,9 @@
+---
+name: testing-policy
+description: Testing requirements for backend logic, repository queries, retrieval pipelines, LLM prompts/evals, and actions to take when tests cannot run.
+activation: Always On
+---
+
 # Rule: Testing Policy
 
 ## Required principle

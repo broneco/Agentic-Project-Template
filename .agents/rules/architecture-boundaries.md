@@ -1,3 +1,9 @@
+---
+name: architecture-boundaries
+description: Enforces architectural boundaries between API, schemas, retrieval, agents, providers, and storage layers, and specifies the dependency direction.
+activation: Always On
+---
+
 # Rule: Architecture Boundaries
 
 ## Backend boundaries
